@@ -1,3 +1,5 @@
+package com.Annotation;
+
 abstract class Abstract
 {
 	abstract void draw();

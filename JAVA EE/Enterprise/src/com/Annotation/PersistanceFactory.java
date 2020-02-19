@@ -1,3 +1,4 @@
+package com.Annotation;
 abstract class Persistence
 {
 	abstract void persist();

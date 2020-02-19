@@ -1,3 +1,4 @@
+package com.Annotation;
 enum Status
 {
 	NEW(0), REJECTED(1), ACCEPTED(2),COMPLETED(3);

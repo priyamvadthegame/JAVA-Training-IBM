@@ -1,7 +1,9 @@
+package com.Annotation;
 import java.util.*;
 abstract class DessertItem
 {
-  abstract double getcost();
+  abstract double getCost();
+
 }
 class Candy extends DessertItem
 {   private int id; 
@@ -14,6 +16,7 @@ class Candy extends DessertItem
 		this.priceWithoutTax=priceWithoutTax;
 		this.taxPercentage=taxPercentage;
 	}
+	@Override
 	public double getCost()
 	{
 		return (priceWithoutTax+((taxPercentage/100.0)*priceWithoutTax))*60;
@@ -25,7 +28,7 @@ class Cookies extends DessertItem
 	private String name;
 	private int priceWithoutTax;
 	private int taxPercentage;
-	public Candy(int id,String name,int priceWithoutTax,int taxPercentage)
+	public Cookies(int id,String name,int priceWithoutTax,int taxPercentage)
 	{   this.id=id;
 		this.name=name;
 		this.priceWithoutTax=priceWithoutTax;
@@ -43,7 +46,7 @@ class Icecream extends DessertItem
 	private int priceWithoutTax;
 	private int taxPercentage;
 	private int getItemCount;
-	public Candy(int id,String name,int priceWithoutTax,int taxPercentage,int getItemCount)
+	public Icecream(int id,String name,int priceWithoutTax,int taxPercentage,int getItemCount)
 	{   this.id=id;
 		this.name=name;
 		this.priceWithoutTax=priceWithoutTax;
@@ -54,17 +57,17 @@ class Icecream extends DessertItem
 	{
 		return priceWithoutTax+((taxPercentage/100.0)*priceWithoutTax);
 	}
-	public void setItemCount(int count);
+	public void setItemCount(int count)
 	{
 		this.getItemCount=count;
 	}
 	public int getItemCount()
 	{
-		return this.it
+		return this.getItemCount;
 }
 class CandyShop
 {
-	public static void main(String args[])
+	public void main(String args[])
 	{   DessertItem d[]=new DessertItem[100];
 		System.out.println("Choose :");
 		System.out.println("1: Customer");
@@ -86,6 +89,14 @@ class CandyShop
 						{
 							for(int j=i;j<;j++)
 							{
+							}
+							
+							}
+					}
+			}
+		}
+	}
+}
 								
 				
 				

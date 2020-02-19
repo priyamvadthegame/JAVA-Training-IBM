@@ -1,3 +1,4 @@
+package com.Annotation;
 class Stack{
 	static final int max=10;
 	private int top;

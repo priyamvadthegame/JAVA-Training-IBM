@@ -1,3 +1,4 @@
+package com.Annotation;
 interface Sortable
 {
 	boolean comp(Sortable s);

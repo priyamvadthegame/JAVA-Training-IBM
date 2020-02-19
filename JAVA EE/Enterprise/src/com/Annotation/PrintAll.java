@@ -1,3 +1,4 @@
+package com.Annotation;
 interface Printable
 {
 	void print();

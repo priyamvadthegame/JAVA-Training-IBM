@@ -1,4 +1,4 @@
-
+package com.Annotation;
 class TestEnum
 {   
 	String s="Test Enum Class";
