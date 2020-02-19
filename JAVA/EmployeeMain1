@@ -1,0 +1,22 @@
+class Employee
+{
+  private String dob;
+  public Employee(String dob)
+  {
+	this.dob=dob;
+  }
+  public String getDob()
+  {
+	return dob;
+  }
+}
+
+class EmployeeMain1 
+{
+	public static void main(String arga[])
+	{
+		Employee e=new Employee(15-10-1998)
+		Employee e1=e;
+		Employee e2=e.clone();
+	}
+}
