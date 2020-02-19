@@ -1,4 +1,4 @@
-package com.Annotation;
+package com.JavaBasics;
 import java.util.*;
 class OuterCache
 {   public static HashMap<Integer,InnerCache> h=new HashMap<>();

@@ -1,4 +1,4 @@
-package com.Annotation;
+package com.JavaBasics;
 public class ThreadSleep {
 
     public static void main(String[] args)throws InterruptedException

@@ -1,4 +1,4 @@
-package com.Annotation;
+package com.JavaBasics;
 import java.lang.reflect.*;
 class StringOpr {
 	public static String getCapital(String name,String name1) {

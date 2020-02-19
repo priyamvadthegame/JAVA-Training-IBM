@@ -1,4 +1,4 @@
-package com.Annotation;
+package com.JavaBasics;
 abstract class Persistence
 {
 	abstract void persist();

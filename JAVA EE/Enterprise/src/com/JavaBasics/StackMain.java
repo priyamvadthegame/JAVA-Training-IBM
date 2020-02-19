@@ -1,4 +1,4 @@
-package com.Annotation;
+package com.JavaBasics;
 class Stack{
 	static final int max=10;
 	private int top;

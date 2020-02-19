@@ -1,4 +1,4 @@
-package com.Annotation;
+package com.JavaBasics;
 class Account
 {
  private int balance;

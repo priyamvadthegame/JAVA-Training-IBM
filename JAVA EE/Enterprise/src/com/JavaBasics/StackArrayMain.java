@@ -1,4 +1,4 @@
-package com.Annotation;
+package com.JavaBasics;
 class StackArray
 {
 	private int arr[];

@@ -1,4 +1,4 @@
-package com.Annotation;
+package com.JavaBasics;
 enum Status
 {
 	NEW(0), REJECTED(1), ACCEPTED(2),COMPLETED(3);

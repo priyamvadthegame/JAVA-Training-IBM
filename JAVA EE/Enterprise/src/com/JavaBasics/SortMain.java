@@ -1,4 +1,4 @@
-package com.Annotation;
+package com.JavaBasics;
 interface Sortable
 {
 	boolean comp(Sortable s);

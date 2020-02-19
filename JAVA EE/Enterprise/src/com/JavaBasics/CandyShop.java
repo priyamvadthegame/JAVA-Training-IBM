@@ -1,4 +1,4 @@
-package com.Annotation;
+package com.JavaBasics;
 import java.util.*;
 abstract class DessertItem
 {
