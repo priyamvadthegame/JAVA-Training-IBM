@@ -81,23 +81,12 @@ class CandyShop
 			System.out.println("2. Cookies :");
 			System.out.println("3. IceCream :");
 			int customerChoice=sc.nextInt();
-			if(customerChoice==1)
-			{
-					for(int i=0;i<d.length;i++)
-					{
-						if(d[i] instanceOf Candy)
-						{
-							for(int j=i;j<;j++)
-							{
-							}
-							
-							}
-					}
-			}
 		}
 	}
 }
-								
+}
+		
+							
 				
 				
 		

@@ -1,10 +1,10 @@
 package com.Annotation;
-class Account
+class Account11
 {
   private int id;
   private String name;
   private double startBalance;
-  public Account(int id,String name,double startBalance)
+  public Account11(int id,String name,double startBalance)
   {
 	this.id=id;
 	this.name=name;
@@ -16,7 +16,7 @@ class Account
   }
 }
 
-class SavingsAccount extends Account
+class SavingsAccount extends Account11
 {
 	double fixedDepositAmmount;
 	public SavingsAccount(int id,String name,double startBalance,double fixedDepositAmmount)
@@ -29,7 +29,7 @@ class SavingsAccount extends Account
 		return super.getBalance()+this.fixedDepositAmmount;
 	}
 }
-class CurrentAccount extends Account
+class CurrentAccount extends Account11
 {
 	double cashCredit;
 	public CurrentAccount(int id,String name,double salary,double cashCredit)
@@ -43,7 +43,7 @@ class CurrentAccount extends Account
 	}
 }
 class AccountMain1
-{	public static double calculateTotalAmountInBank(Account e[])
+{	public static double calculateTotalAmountInBank(Account11 e[])
 	{	double totalBalance=0;
 		for(int i=0;i<e.length;i++)
 		{
@@ -54,7 +54,7 @@ class AccountMain1
 	}
 	public static void main(String args[])
 	{
-		Account e[]=new Account[4];
+		Account11 e[]=new Account11[4];
 		e[0]=new SavingsAccount(50,"Hemant",300000.0,300.0);
 		e[1]=new SavingsAccount(50,"Raj",40000.0,2000.0);
 		e[2]=new CurrentAccount(50,"Priyamvad",1000.0,100.0);

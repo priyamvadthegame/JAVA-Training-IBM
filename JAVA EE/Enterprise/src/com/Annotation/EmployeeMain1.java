@@ -1,8 +1,8 @@
 package com.Annotation;
-class Employee implements Cloneable
+class Employee101 implements Cloneable
 {
   private Date d;
-  public Employee(Date d)
+  public Employee101(Date d)
   {
 	this.d=d;
   }
@@ -18,7 +18,7 @@ class Employee implements Cloneable
    {  try
 	   {
 			Object ob=super.clone();
-			Employee e=(Employee)ob;
+			Employee101 e=(Employee101)ob;
 		    e.setDob((Date)d.clone());
 			return ob;
 	   }
@@ -39,9 +39,9 @@ class EmployeeMain1
 {
 	public static void main(String args[])
 	{   Date d=new Date(15,10,1998);
-		Employee e=new Employee(d);
-		Employee e1=e;
-		Employee e2=(Employee)e.clone();
+		Employee101 e=new Employee101(d);
+		Employee101 e1=e;
+		Employee101 e2=(Employee101)e.clone();
 		System.out.println(e.hashCode()+" "+e2.hashCode());
 		System.out.println(e+" "+e2);
 		System.out.println("Shallo: "+(e.getDob()==e2.getDob()));

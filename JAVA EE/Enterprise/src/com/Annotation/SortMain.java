@@ -3,16 +3,16 @@ interface Sortable
 {
 	boolean comp(Sortable s);
 }
-class Employee implements Sortable
+class Employee1 implements Sortable
 {
 	public String name;
-	Employee(String name)
+	Employee1(String name)
 	{
 		this.name=name;
 	}
 	public boolean comp(Sortable s)
 	{
-		if((this.name.compareTo(((Employee)s).name))>0)
+		if((this.name.compareTo(((Employee1)s).name))>0)
 		{
 			return true;
 		}
@@ -26,16 +26,16 @@ class Employee implements Sortable
 		return this.name;
 	}
 }
-class Circle implements Sortable
+class Circle1 implements Sortable
 {
 	public int radius;
-	public Circle(int radius)
+	public Circle1(int radius)
 	{
 		this.radius=radius;
 	}
 	public boolean comp(Sortable s)
 	{
-		if(this.radius>(((Circle)s).radius))
+		if(this.radius>(((Circle1)s).radius))
 		{
 			return true;
 		}
@@ -70,14 +70,14 @@ class SortMain
 		{
 			Sortable s[]=new Sortable[4];
 			Sortable s1[]=new Sortable[4];
-			s[0] =new Employee("priyam");
-			s[1] =new Employee("priya");
-			s[2] =new Employee("hemant");
-			s[3]=new Employee("Abhishek");
-			s1[0]=new Circle(11);
-			s1[1]= new  Circle(10);
-			s1[2]=new Circle(5);
-			s1[3]=new Circle(1);
+			s[0] =new Employee1("priyam");
+			s[1] =new Employee1("priya");
+			s[2] =new Employee1("hemant");
+			s[3]=new Employee1("Abhishek");
+			s1[0]=new Circle1(11);
+			s1[1]= new  Circle1(10);
+			s1[2]=new Circle1(5);
+			s1[3]=new Circle1(1);
 			SortMain.sortAll(s);
 			SortMain.sortAll(s1);
 			for (int i = 0; i < s.length; i++)

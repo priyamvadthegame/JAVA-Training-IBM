@@ -4,7 +4,7 @@ interface Printable
 	void print();
 }
 
-class Employee implements Printable
+class Employee10 implements Printable
 {
 	public void print()
 	{
@@ -30,7 +30,7 @@ class PrintAll
 	public static void main(String args[])
 	{
 		Printable p[]=new Printable[2];
-		p[0]=new Employee();
+		p[0]=new Employee10();
 		p[1]=new Circle();
 		PrintAll.printAll(p);
 	}

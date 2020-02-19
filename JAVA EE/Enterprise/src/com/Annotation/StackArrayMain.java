@@ -16,13 +16,16 @@ class StackArray
 				return i;
 			}
 		}
+		return 0;
 	}
 	public boolean push(int x)
 	{
 		arr[getTop()]=x;
+		return false;
 	}
 	public int pop()
 	{
 		return arr[getTop()];
 	}
+	
 }
