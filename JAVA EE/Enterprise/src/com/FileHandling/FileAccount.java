@@ -48,23 +48,16 @@ public class FileAccount {
 			
 		}
 		StringBuilder sb=new StringBuilder();
-		int readInteger,i=0;
+		int readInteger=0;
 		String readString="";
 		double readBalance=0.0;
-		do 
-		{	
-			if(i!=-1)
-			{		
-				
-					readString=dis.readUTF();
-					readInteger = dis.readInt();
-					
-					readBalance=dis.readDouble();
-			
-					sb.append(String.valueOf(readInteger)+" "+readString+" "+(String.valueOf(readBalance))); 
-			}
-			i=dis.read();
-		}while(i != -1); 
+		while(dis.available()>0)
+		{
+			sb=sb.append(String.valueOf(dis.readUTF())+" ");
+			sb=sb.append(String.valueOf(dis.readInt())+" ");
+			sb=sb.append(String.valueOf(dis.readDouble())+" ");
+			sb.append("\n");
+		}
 		System.out.println(sb);
 		dos.flush(); 
 		fos.flush(); 
