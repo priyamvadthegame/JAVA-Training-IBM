@@ -4,10 +4,11 @@ package com.JavaBasics;
 
 public class MyThreadAnonymous {
 	
-	public MyThreadAnonymous(Runnable r) {
-		// TODO Auto-generated constructor stub
+	public MyThreadAnonymous(Runnable r,boolean deamon) {
 		Thread t=new Thread(r);
+		t.setDaemon(deamon);
 		t.start();
+		
 	}
 	public static void main(String args[])
 	{
@@ -15,7 +16,6 @@ public class MyThreadAnonymous {
 			
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 				
 					for(int i=0;i<20;i++)
 					{
@@ -37,7 +37,6 @@ Runnable r1=new Runnable() {
 			
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 					
 					for(int i=0;i<20;i++)
 					{	
@@ -54,8 +53,29 @@ Runnable r1=new Runnable() {
 				}
 			
 		};
-		new MyThreadAnonymous(r);
-		new MyThreadAnonymous(r1);
+Runnable r2=new Runnable() {
+			
+			@Override
+			public void run() {
+					
+					for(;;)
+					{	
+						System.out.println("\t\ttong");
+						try
+						{
+							Thread.sleep(300);
+						}
+						catch(InterruptedException e)
+						{
+							e.printStackTrace();
+						}
+					}
+				}
+			
+		};
+		new MyThreadAnonymous(r,false);
+		new MyThreadAnonymous(r1,false);
+		new MyThreadAnonymous(r2,true);
 		
 	}
 
