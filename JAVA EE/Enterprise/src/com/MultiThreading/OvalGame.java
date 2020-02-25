@@ -3,27 +3,125 @@ package com.MultiThreading;
 import java.awt.Color;
 import java.awt.Frame;
 import java.awt.Graphics;
-import java.awt.event.WindowEvent;
-
-
-
 import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.ReentrantLock;
 
-public class OvalGame extends Frame {
+public class OvalGame extends Frame implements Runnable {
 
-	public static int y1 = 400, y2 = 400, y3 = 400;
+	int y1 = 400, y2 = 400, y3 = 400;
+	boolean b1Reached, b2Reached, b3Reached;
+	
+	Thread t1, t2, t3;
+	
 	public OvalGame() {
-		super("Oval game");
-		setBackground(Color.CYAN);
-		setSize(500, 500);
-		setVisible(true);
+		super("");
 		this.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				System.exit(0);
 			}
 		});
+		t1 = new Thread(this, "Ball_1");
+		t2 = new Thread(this, "Ball_2");
+		t3 = new Thread(this, "Ball_3");
+		t1.start();t2.start();t3.start();
 	}
-		
+	ReentrantLock lock=new ReentrantLock();
+	Condition c=lock.newCondition();
+	public void waitForOtherBalls() {
+		lock.lock();
+		try {
+		if (b1Reached && b2Reached && b3Reached) {
+			b1Reached = false;
+			b2Reached = false;
+			b3Reached = false;
+			c.signalAll();
+		}
+		else {
+			try {
+				c.await();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	finally {
+		lock.unlock();
+	}
+	}
+	
+	public void run() {
+		Thread currentThread = Thread.currentThread();
+		if (currentThread.getName().equals("Ball_1")) {
+			for(;;) {
+				for(int i=400; i>100; i = i-5) {
+					y1 = i;
+					repaint();
+					try { Thread.sleep(100); } catch(Exception e) {}
+					if (i < 10)
+						break;
+				}
+				b1Reached = true;
+				waitForOtherBalls();
+				for(int i=100; i<=400; i = i+5) {
+					y1 = i;
+					repaint();
+					try { Thread.sleep(100); } catch(Exception e) {}
+					if (i > 395)
+						break;
+				}
+				b1Reached = true;
+				waitForOtherBalls();
+			}
+		}
+
+		else if (currentThread.getName().equals("Ball_2")) {
+			for(;;) {
+				for(int i=400; i>100; i = i-5) {
+					y2 = i;
+					repaint();
+					try { Thread.sleep(200); } catch(Exception e) {}
+					if (i < 10)
+						break;
+				}
+				b2Reached = true;
+				waitForOtherBalls();
+				for(int i=100; i<=400; i = i+5) {
+					y2 = i;
+					repaint();
+					try { Thread.sleep(200); } catch(Exception e) {}
+					if (i > 395)
+						break;
+				}
+				b2Reached = true;
+				waitForOtherBalls();
+			}
+		}
+		else if (currentThread.getName().equals("Ball_3")) {
+			for(;;) {
+				for(int i=400; i>100; i = i-5) {
+					y3 = i;
+					repaint();
+					try { Thread.sleep(300); } catch(Exception e) {}
+					if (i < 10)
+						break;
+				}
+				b3Reached = true;
+				waitForOtherBalls();
+				for(int i=100; i<=400; i = i+5) {
+					y3 = i;
+					repaint();
+					try { Thread.sleep(300); } catch(Exception e) {}
+					if (i > 395)
+						break;
+				}
+				b3Reached = true;
+				waitForOtherBalls();
+			}
+		}
+	}
+	
 	public void paint(Graphics g) {
 		g.setColor(Color.RED);
 		g.fillOval(100, y1, 50, 50);
@@ -31,110 +129,12 @@ public class OvalGame extends Frame {
 		g.fillOval(200, y2, 50, 50);
 		g.setColor(Color.BLUE);
 		g.fillOval(300, y3, 50, 50);
-		
 	}
-
-	public static void main(String[] args) throws InterruptedException {
-		Frame mf = new OvalGame();
-		mf.setSize(500, 500);
-		mf.setVisible(true);
-		
-		Thread ball1 =new Thread(new Runnable() {
-			boolean flag=false;
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-				
-				while(true)
-				{   if(y1>=100&&flag==false)
-					y1=y1-10;
-				else
-				{
-					flag=true;
-					y1=y1+10;
-					if(y1==400)
-					{
-						flag=false;
-					}
-				}
-				mf.repaint();
-				try {
-					Thread.sleep(300);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-				
-				}
-				
-				
-			}
-			
-		});
-Thread ball2 =new Thread(new Runnable() {
-			boolean flag=false;
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-				while(true)
-				{   if(y2>=100&&flag==false)
-					y2=y2-10;
-				else
-				{
-					flag=true;
-					y2=y2+10;
-					if(y2==400)
-					{
-						flag=false;
-					}
-				}
-				mf.repaint();
-				try {
-					Thread.sleep(200);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-				}
-				
-			}
-		});
-Thread ball3 =new Thread(new Runnable() {
 	
-	boolean flag=false;
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-		while(true)
-		{   if(y3>=100&&flag==false)
-			y3=y3-10;
-		else
-		{
-			flag=true;
-			y3=y3+10;
-			if(y3==400)
-			{
-				flag=false;
-			}
-		}
-		mf.repaint();
-		try {
-			Thread.sleep(100);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		}
-		
-	}
-});
-
-ball1.start();
-ball2.start();
-ball3.start();
-
+	public static void main(String args[]) {
+		Frame om = new OvalGame();
+		om.setSize(600, 600);
+		om.setBackground(Color.CYAN);
+		om.setVisible(true);
 	}
 }
