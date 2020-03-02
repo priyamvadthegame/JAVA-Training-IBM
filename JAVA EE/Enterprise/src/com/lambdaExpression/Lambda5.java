@@ -3,9 +3,7 @@ import java.util.ArrayList;
 import java.util.function.Consumer;
 
 public class Lambda5 {
-
 	static StringBuilder s=new StringBuilder("");
-	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ArrayList<StringBuilder> ar=new ArrayList<StringBuilder>();
@@ -21,5 +19,4 @@ public class Lambda5 {
 			c.accept(a);
 		}
 	}
-
 }
