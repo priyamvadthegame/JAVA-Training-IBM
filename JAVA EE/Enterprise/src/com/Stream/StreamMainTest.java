@@ -46,6 +46,14 @@ public class StreamMainTest {
 		
 		System.out.println("\n**Assignment12 answer\n");
 		TestData.getAllTransactions().stream().filter((Transaction t)->t.getTrader().getCity().equalsIgnoreCase("Pune")).map((Transaction t)->t.getValue()).forEach(System.out::println);
+		System.out.println("\n**Assignment13 answer\n");
+		Optional<Integer> maxNumber =TestData.getAllTransactions().stream().map((Transaction t)->t.getValue()).reduce(Integer::max);
+		System.out.println(maxNumber.get());
+		System.out.println("\n**Assignment14 answer\n");
+		Optional<Integer> minNumber =TestData.getAllTransactions().stream().map((Transaction t)->t.getValue()).reduce(Integer::min);
+		System.out.println(minNumber.get());
+		System.out.println("\n**Assignment15 answer\n");
+		
 		
 		
 	}
