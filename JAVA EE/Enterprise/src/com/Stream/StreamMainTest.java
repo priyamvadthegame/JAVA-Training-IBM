@@ -3,9 +3,6 @@ package com.Stream;
 import java.util.Comparator;
 import java.util.Map;
 import java.util.stream.Collectors;
-
-
-
 public class StreamMainTest {
 
 	public static void main(String[] args) {
@@ -18,10 +15,12 @@ public class StreamMainTest {
 		System.out.println("\n**Assignment3 answer\n");
 		TestData.getAllFruits().stream().filter((Fruit f)->f.getColor().equals("Red")).sorted(Comparator.comparing(Fruit::getPrice)).forEach(System.out::println);
 		System.out.println("\n**Assignment4 answer\n");
-		TestData.getAllNews().stream();
+		TestData.getAllNews().stream().collect(Collectors.groupingBy(News::getNewsId,Collectors.counting()));
 		System.out.println("\n**Assignment5 answer\n");
 		System.out.println(TestData.getAllNews().stream().filter((News n)->n.getComment().contains("budget")).count());
 		System.out.println("\n**Assignment6 answer\n");
+		TestData.getAllNews().stream().collect(Collectors.groupingBy(News::getCommentByUser,Collectors.counting())).forEach((key, value) -> System.out.println(key + ":" + value));
+	
 		
 	}
 
