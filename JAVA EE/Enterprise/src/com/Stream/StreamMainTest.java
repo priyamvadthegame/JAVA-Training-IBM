@@ -2,6 +2,7 @@ package com.Stream;
 
 import java.util.Comparator;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -19,7 +20,8 @@ public class StreamMainTest {
 		System.out.println("\n**Assignment3 answer\n");
 		TestData.getAllFruits().stream().filter((Fruit f)->f.getColor().equals("Red")).sorted(Comparator.comparing(Fruit::getPrice)).forEach(System.out::println);
 		System.out.println("\n**Assignment4 answer\n");
-		TestData.getAllNews().stream().collect(Collectors.groupingBy(News::getNewsId,Collectors.counting()));
+		System.out.println((TestData.getAllNews().stream().collect(Collectors.groupingBy(News::getNewsId,Collectors.counting())).entrySet().stream().max(Comparator.comparing(Entry::getValue)).get()).getKey())
+		;
 		System.out.println("\n**Assignment5 answer\n");
 		System.out.println(TestData.getAllNews().stream().filter((News n)->n.getComment().contains("budget")).count());
 		System.out.println("\n**Assignment6 answer\n");
@@ -53,6 +55,7 @@ public class StreamMainTest {
 		Optional<Integer> minNumber =TestData.getAllTransactions().stream().map((Transaction t)->t.getValue()).reduce(Integer::min);
 		System.out.println(minNumber.get());
 		System.out.println("\n**Assignment15 answer\n");
+		System.out.println(TestData.getAllNews().stream().collect(Collectors.groupingBy(News::getPostedByUser,Collectors.counting())).entrySet().stream().max(Comparator.comparing(Entry::getValue)).get());
 		
 		
 		
