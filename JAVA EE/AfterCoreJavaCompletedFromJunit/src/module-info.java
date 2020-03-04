@@ -1,0 +1,3 @@
+module AfterCoreJavaCompletedFromJunit {
+	requires junit;
+}
