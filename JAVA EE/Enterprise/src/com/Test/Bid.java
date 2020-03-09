@@ -1,6 +1,10 @@
 package com.Test;
 import java.util.*;
 public class Bid {
+	public static void main(String args[])
+	{
+		System.out.println("priyamvad");
+	}
 public static void method(int n,ArrayList a1,ArrayList a2)
 {	
 	ArrayList<Integer> al=new ArrayList<Integer>();
